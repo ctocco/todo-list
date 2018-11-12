@@ -4,8 +4,6 @@
 
 // require("bootstrap");
 
-console.log("hello");
-
 //in the form you are looking for event submit
 
 let form = document.getElementById("addForm");
@@ -14,7 +12,8 @@ let form = document.getElementById("addForm");
 
 let itemList = document.getElementById("items");
 
-// Form Submit event -
+// Form Submit event - take the form var and add event listner
+//1. listen for submit event then make function addItem
 
 form.addEventListener("submit", addItem);
 
@@ -27,7 +26,7 @@ function addItem(e) {
 
   let newItem = document.getElementById("item").value;
 
-  // create new li element
+  // create new li element. This creates an element without yet appending it to the DOM
 
   let li = document.createElement("li");
 
@@ -41,5 +40,18 @@ function addItem(e) {
 
   li.appendChild(document.createTextNode(newItem));
 
+  // create delete button element
+  let deleteBtn = document.createElement("button");
+
+  // add clsses to delete button
+
+  deleteBtn.className = "btn btn-danger btn-sm float-right delete";
+
+  deleteBtn.appendChild(document.createTextNode("X"));
+
+  //Append button to li
+  li.appendChild(deleteBtn);
+
+  //Append li to the list.
   itemList.appendChild(li);
 }
