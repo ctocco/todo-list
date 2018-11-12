@@ -15,6 +15,9 @@ let itemList = document.getElementById("items");
 // Form Submit event - take the form var and add event listner
 //1. listen for submit event then make function addItem
 
+// delete event
+itemList.addEventListener("click", removeItem);
+
 form.addEventListener("submit", addItem);
 
 // Add item
@@ -54,4 +57,15 @@ function addItem(e) {
 
   //Append li to the list.
   itemList.appendChild(li);
+}
+
+// Remove Item
+function removeItem(e) {
+  if (e.target.classList.contains("delete")) {
+    if (confirm("Are you sure")) {
+      //we want the parent li
+      let li = e.target.parentElement;
+      itemList.removeChild(li);
+    }
+  }
 }
